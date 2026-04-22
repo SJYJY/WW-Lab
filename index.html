@@ -225,6 +225,38 @@
             40% { transform: scale(1.14); }
             100% { transform: scale(1); }
         }
+        body.light-mode .btn-home,
+        body.light-mode .btn-menu,
+        body.light-mode .btn-theme-switch {
+            border-color: rgba(31, 95, 151, 0.42);
+            background: rgba(31, 95, 151, 0.08);
+            color: #163558;
+        }
+        body.light-mode .btn-home:hover,
+        body.light-mode .btn-menu:hover,
+        body.light-mode .btn-theme-switch:hover {
+            border-color: rgba(31, 95, 151, 0.7);
+            background: rgba(31, 95, 151, 0.16);
+            color: #102a46;
+        }
+        body.light-mode .lang-toggle {
+            border-color: rgba(31, 95, 151, 0.42);
+            background: rgba(31, 95, 151, 0.08);
+        }
+        body.light-mode .lang-btn {
+            color: rgba(22, 53, 88, 0.85);
+        }
+        body.light-mode .lang-btn.active {
+            background: rgba(31, 95, 151, 0.22);
+            color: #102a46;
+            box-shadow: 0 0 0 1px rgba(31, 95, 151, 0.35) inset;
+        }
+        body.light-mode .options-panel {
+            border-color: rgba(31, 95, 151, 0.28);
+        }
+        body.light-mode .opt-item:hover {
+            background: rgba(31, 95, 151, 0.12);
+        }
         .options-panel {
             position: absolute;
             top: calc(100% + 10px);
@@ -298,8 +330,8 @@
             -webkit-backdrop-filter: blur(16px);
         }
         .section-dot {
-            width: 8px;
-            height: 8px;
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
             border: none;
             padding: 0;
@@ -312,12 +344,28 @@
             background: rgba(255, 255, 255, 0.8);
         }
         .section-dot.active {
-            transform: scale(1.45);
+            transform: scale(1.5);
             background: var(--neon-border);
             box-shadow: 0 0 0 6px var(--primary-glow-dim);
         }
         body.light-mode #section-dots {
-            background: rgba(255, 255, 255, 0.55);
+            background: rgba(255, 255, 255, 0.84);
+            border-color: rgba(31, 95, 151, 0.34);
+            box-shadow: 0 8px 24px rgba(31, 95, 151, 0.14);
+        }
+        body.light-mode .section-dot {
+            background: rgba(31, 95, 151, 0.34);
+        }
+        body.light-mode .section-dot:hover {
+            background: rgba(31, 95, 151, 0.62);
+        }
+        body.light-mode .section-dot.active {
+            background: #1f5f97;
+            box-shadow: 0 0 0 7px rgba(31, 95, 151, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+        }
+        #section-dots .section-dot:focus-visible {
+            outline: 2px solid var(--primary-glow);
+            outline-offset: 2px;
         }
 
         /* 内容区容器 */
@@ -498,6 +546,11 @@
             color: #ffffff;
             background: var(--neon-border);
         }
+        body.light-mode .map-link {
+            border-color: rgba(31, 95, 151, 0.72);
+            color: #1f5f97;
+            background: rgba(31, 95, 151, 0.07);
+        }
         body.light-mode .map-link:hover {
             color: #ffffff;
         }
@@ -519,6 +572,14 @@
         .btn-copy-email:hover {
             background: rgba(0, 229, 255, 0.2);
             transform: scale(1.1);
+        }
+        body.light-mode .btn-copy-email {
+            border-color: rgba(31, 95, 151, 0.7);
+            color: #1f5f97;
+            background: rgba(31, 95, 151, 0.06);
+        }
+        body.light-mode .btn-copy-email:hover {
+            background: rgba(31, 95, 151, 0.2);
         }
         .btn-action {
             background: rgba(0, 229, 255, 0.1);
