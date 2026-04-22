@@ -1906,37 +1906,51 @@
         function navTo(sectionId, direction = 'none') {
             if (!SECTION_ORDER.includes(sectionId)) return;
             const wrapper = document.getElementById('content-wrapper');
-            if (wrapper) {
-                wrapper.style.transform = 'translateY(0)';
-            }
 
+            // 如果是点击当前页的导航，保留平滑滚动体验
             if (currentSectionId === sectionId && direction === 'none') {
-                document.getElementById('content-wrapper').scrollTo(0, 0);
+                wrapper?.scrollTo({ top: 0, behavior: 'smooth' });
                 return;
             }
 
-            // 1. 滚动条置顶
-            document.getElementById('content-wrapper').scrollTo(0, 0);
+            // --- 核心修复：打断滚动惯性与临时关闭平滑滚动 ---
+            if (wrapper) {
+                wrapper.style.transform = 'translateY(0)';
+                wrapper.style.scrollBehavior = 'auto'; // 临时关闭平滑
+                wrapper.style.overflowY = 'hidden';    // 临时隐藏滚动条，强行刹车，杀掉触控板/滚轮惯性
+            }
 
-            // 2. 隐藏所有 section，取消所有 nav 激活状态
+            // 1. 隐藏所有 section，取消所有 nav 激活状态
             document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active', 'anim-from-next', 'anim-from-prev'));
             document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
 
-            // 3. 激活目标 section
+            // 2. 激活目标 section
             const targetSection = document.getElementById(sectionId);
             if (!targetSection) return;
             if (direction === 'next') targetSection.classList.add('anim-from-next');
             if (direction === 'prev') targetSection.classList.add('anim-from-prev');
-            targetSection.classList.add('active');
+            targetSection.classList.add('active'); // 新页面此刻变为 display: block
 
-            // 4. 匹配导航栏高亮 (排除了首页logo的点击)
-            const activeLink = Array.from(document.querySelectorAll('.nav-link')).find(link => link.getAttribute('onclick').includes(sectionId));
+            // 3. 匹配导航栏高亮 (排除了首页logo的点击)
+            const activeLink = Array.from(document.querySelectorAll('.nav-link')).find(link => link.getAttribute('onclick')?.includes(sectionId));
             if(activeLink) activeLink.classList.add('active');
 
             currentSectionId = sectionId;
             updateSectionDots();
             wheelAccumulator = 0;
             wheelDirection = 0;
+
+            // 4. 在新页面 DOM 渲染后置顶，并用 setTimeout 恢复滚动能力
+            if (wrapper) {
+                wrapper.scrollTo(0, 0); // 瞬间置顶
+                void wrapper.offsetHeight; // 强制浏览器重绘（Reflow），确保置顶生效
+                
+                // 延迟 80ms 恢复滚动，这段时间足够消化掉用户手部多余的物理滑动惯性
+                setTimeout(() => {
+                    wrapper.style.scrollBehavior = '';
+                    wrapper.style.overflowY = 'auto';
+                }, 80); 
+            }
         }
 
         function updateSectionDots() {
