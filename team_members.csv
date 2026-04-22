@@ -1,0 +1,15 @@
+role,name,display_name,email,direction,photo
+科研助理,龚怡赟,龚怡赟,assistant.a@sjtu.edu.cn,,
+科研助理,陈阿圆,陈阿圆,assistant.b@sjtu.edu.cn,,
+科研助理,梁燕,梁燕,assistant.c@sjtu.edu.cn,cTBS,
+博士后,王文龙,王文龙,postdoc.1@sjtu.edu.cn,,
+博士后,刘锦,刘锦,postdoc.2@sjtu.edu.cn,,
+博士后,刘宇,刘宇,postdoc.3@sjtu.edu.cn,MRI,
+博士生,植弘毅,植弘毅,phd.x@sjtu.edu.cn,,
+博士生,刘俊麟,刘俊麟,phd.y@sjtu.edu.cn,,
+博士生,杨焘,杨焘,phd.z@sjtu.edu.cn,基于强化学习的呼吸机,
+直博生,朱思仪,朱思仪,direct-phd.q@sjtu.edu.cn,cTBS,
+硕士生,许伊娴,许伊娴,master.m3@sjtu.edu.cn,高危人群转化,
+硕士生,胥思源,胥思源,master.m4@sjtu.edu.cn,MSA vs PD,
+硕士生,徐蕾,徐蕾,master.m2@sjtu.edu.cn,自闭症生物标志物挖掘,
+硕士生,贾杜金,贾杜金,dj_jia@sjtu.edu.cn,ASD、药物疗效生物标记物挖掘、脑电生物标记物辅助新药开发,硕士生 贾杜金.jpg

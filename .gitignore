@@ -1,0 +1,11 @@
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Editor files
+.vscode/
+
+# Temp files
+*.tmp
+*.bak
+~$*

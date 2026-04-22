@@ -1,0 +1,27 @@
+id,section,slot,recommended_filename,status,current_file_if_exists,put_in_folder,html_binding_note
+1,教授简介,吴畏教授头像,pi_wuwei.jpg,已放置,pi 吴畏.jpg,KTZ根目录,main.html 中 prof-avatar 的 img src
+2,集体活动,活动图1-奉贤会议,gallery_group_fengxian_meeting.jpg,已放置,课题组合照 奉贤会议.jpg,KTZ根目录,main.html 中 gallery 第1项 data-lightbox-image/img src
+3,集体活动,活动图2-徐汇校区,gallery_group_xuhui_campus.jpg,已放置,课题组合照 徐汇校区.jpg,KTZ根目录,main.html 中 gallery 第2项 data-lightbox-image/img src
+4,集体活动,活动图3-新年合照,gallery_group_newyear.jpg,已放置,课题组合照 新年合照.jpg,KTZ根目录,main.html 中 gallery 第3项 data-lightbox-image/img src
+5,集体活动,活动图4-峰会,gallery_group_bci_summit.jpg,已放置,课题组合照 智能神经调控与脑机接口峰会.jpg,KTZ根目录,main.html 中 gallery 第4项 data-lightbox-image/img src
+6,集体活动,活动图5-特别的生日,gallery_group_birthday.jpg,已放置,课题组合照 特别的生日.jpg,KTZ根目录,main.html 中 gallery 第5项 data-lightbox-image/img src
+7,课题组成员,硕士生A,master_a.jpg,已放置,硕士生 贾杜金.jpg,KTZ根目录,main.html 中 硕士 M1 的 member-photo img src
+8,课题组成员,科研助理A,assistant_a.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+9,课题组成员,科研助理B,assistant_b.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+10,课题组成员,科研助理C,assistant_c.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+11,课题组成员,博士后A,postdoc_a.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+12,课题组成员,博士后B,postdoc_b.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+13,课题组成员,博士后C,postdoc_c.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+14,课题组成员,博士生A,phd_a.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+15,课题组成员,博士生B,phd_b.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+16,课题组成员,博士生C,phd_c.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+17,课题组成员,直博生,direct_phd.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+18,课题组成员,硕士生B,master_b.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+19,课题组成员,硕士生C,master_c.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+20,课题组成员,硕士生D,master_d.jpg,缺失,,KTZ根目录,替换对应 member-photo 占位文字“待放照片”
+21,研究方向,研究方向配图位A,research_a.jpg,缺失,,KTZ根目录,替换“研究方向配图位 A”区域为 img
+22,研究方向,研究方向配图位B,research_b.jpg,缺失,,KTZ根目录,替换“研究方向配图位 B”区域为 img
+23,代表性论文,成果总览配图位,pubs_overview.jpg,缺失,,KTZ根目录,替换“研究成果总览配图位”区域为 img
+24,集体活动,活动图6-莫干山团建,gallery_group_moganshan.jpg,已放置,课题组合照 莫干山团建.jpg,KTZ根目录,main.html 中 gallery 第6项 data-lightbox-image/img src
+25,集体活动,活动图7-课题组聚餐,gallery_group_dinner.jpg,已放置,课题组合照 课题组聚餐.jpg,KTZ根目录,main.html 中 gallery 第7项 data-lightbox-image/img src
+26,集体活动,活动图8-采集脑电,gallery_group_eeg_collection.jpg,已放置,课题组合照 采集脑电.jpg,KTZ根目录,main.html 中 gallery 第8项 data-lightbox-image/img src
