@@ -509,15 +509,44 @@
         }
         .map-canvas {
             position: relative;
-            height: 210px;
+            height: 360px; /* Increased to show more of the map image vertically */
             background: linear-gradient(125deg, rgba(36, 110, 176, 0.22), rgba(36, 110, 176, 0.08));
         }
         .map-frame {
+            position: relative;
             width: 100%;
             height: 100%;
             border: 0;
             display: block;
             filter: saturate(0.95) contrast(1.02);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .map-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Use contain so the whole PNG is visible without vertical crop */
+            display: block;
+            background: var(--bg-color);
+        }
+        .map-frame::after {
+            content: '前往地图';
+            position: absolute;
+            left: 16px;
+            bottom: 14px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.58);
+            color: #fff;
+            font-size: calc(0.82rem * var(--font-scale));
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .map-frame:hover::after {
+            transform: translateY(-1px);
+            background: rgba(0, 0, 0, 0.72);
         }
         .map-meta {
             display: flex;
@@ -553,6 +582,38 @@
         }
         body.light-mode .map-link:hover {
             color: #ffffff;
+        }
+        .member-photo-preview {
+            margin-bottom: 18px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+        }
+        .member-photo-preview-btn {
+            width: 100%;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            display: block;
+        }
+        .member-photo-preview-btn img {
+            width: 100%;
+            max-height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+        .member-photo-preview-placeholder {
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-soft);
+            background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+            font-size: calc(0.95rem * var(--font-scale));
+            letter-spacing: 1px;
         }
         body.large-text { --font-scale: 1.2; }
         body.hide-cursor-glow #cursor-blob { display: none; }
@@ -992,6 +1053,12 @@
                 <h2 id="modal-member-name">成员名字</h2>
                 <button class="modal-close" onclick="closeMemberModal()">✕</button>
             </div>
+            <div class="member-photo-preview" id="modal-member-photo-wrap" style="display:none;">
+                <button class="member-photo-preview-btn" type="button" id="modal-member-photo-btn" onclick="openMemberPhotoLightbox()">
+                    <img id="modal-member-photo" alt="成员照片">
+                </button>
+                <div class="member-photo-preview-placeholder" id="modal-member-photo-placeholder" style="display:none;">暂无照片</div>
+            </div>
             <div class="modal-info-item">
                 <div class="modal-info-label" data-i18n="member_role">岗位</div>
                 <div class="modal-info-value" id="modal-member-role">-</div>
@@ -1324,17 +1391,18 @@
                     </p>
                     <div class="contact-map">
                         <div class="map-canvas">
-                            <iframe
+                            <a
                                 class="map-frame"
-                                title="上海市松江区中山二路621号地图"
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"
-                                src="https://www.google.com/maps?q=%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%9D%BE%E6%B1%9F%E5%8C%BA%E4%B8%AD%E5%B1%B1%E4%BA%8C%E8%B7%AF621%E5%8F%B7&output=embed">
-                            </iframe>
+                                title="查看地图"
+                                href="https://amap.com/search?query=上海市松江区中山二路621号"
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                <img src="地图位置.png" alt="研究院地图位置">
+                            </a>
                         </div>
                         <div class="map-meta">
                             <div class="map-address" data-i18n="contact_address">📍 地址：上海市松江区中山二路621号</div>
-                            <a class="map-link" data-i18n="contact_map_open" href="https://www.shsmu.edu.cn/sri/">访问到研究院</a>
+                            <a class="map-link" data-i18n="contact_map_open" href="https://www.shsmu.edu.cn/sri/" target="_blank" rel="noopener noreferrer">访问研究院官网</a>
                         </div>
                     </div>
                 </div>
@@ -1424,7 +1492,7 @@
                 contact_postdoc_desc: '提供具有竞争力的薪酬待遇和国际顶尖的科研平台，欢迎具有生物医学工程、计算机科学、统计学等相关背景的博士毕业生联系。',
                 contact_info: '联系方式',
                 contact_address: '📍 地址：上海市松江区中山二路621号',
-                contact_map_open: '访问研究院主页',
+                contact_map_open: '访问研究院官网',
                 
                 // 成员详情
                 member_role: '岗位',
@@ -1525,7 +1593,7 @@
                 contact_postdoc_desc: 'We offer competitive compensation and a world-class research platform. We welcome PhD graduates with backgrounds in biomedical engineering, computer science, statistics, and related fields to apply.',
                 contact_info: 'Contact Information',
                 contact_address: '📍 Address: No. 621 Zhongshan 2nd Road, Songjiang District, Shanghai',
-                contact_map_open: 'Open in Map',
+                contact_map_open: 'Visit the Institute Website',
                 
                 // Member Details
                 member_role: 'Position',
@@ -1596,11 +1664,11 @@
         let wheelAccumulator = 0;
         let wheelDirection = 0;
         let wheelPeekTimer = null;
-        let wheelDeltaEMA = 40;
-        const WHEEL_MIN_THRESHOLD = 95;
-        const WHEEL_MAX_THRESHOLD = 240;
-        const WHEEL_COOLDOWN_MS = 420;
-        const EDGE_TOLERANCE = 24;
+        let wheelDeltaEMA = 55;
+        const WHEEL_MIN_THRESHOLD = 280;
+        const WHEEL_MAX_THRESHOLD = 520;
+        const WHEEL_COOLDOWN_MS = 560;
+        const EDGE_TOLERANCE = 48;
         
         let mouseX = window.innerWidth / 2; let mouseY = window.innerHeight / 2;
         let blobX = mouseX; let blobY = mouseY;
@@ -1783,6 +1851,16 @@
             }).filter(member => member.role && member.name);
         }
 
+        const MEMBER_PHOTO_ALIASES = {
+            '科研助理|陈阿园': '科研助理 陈阿圆.jpg'
+        };
+
+        function resolveMemberPhotoPath(member) {
+            const aliasKey = `${member.role}|${member.name}`;
+            const photoPath = (MEMBER_PHOTO_ALIASES[aliasKey] || member.photo || `${member.role} ${member.name}.jpg`).trim();
+            return photoPath ? encodeURI(photoPath) : '';
+        }
+
         function renderTeamMembers(members) {
             const container = document.getElementById('team-members-container');
             if (!container) return;
@@ -1816,10 +1894,11 @@
                     <div class="member-grid">`;
 
                 groupMembers.forEach(member => {
-                    const photoHtml = member.photo
-                        ? `<img src="${member.photo}" alt="${member.name}">`
+                    const photoPath = resolveMemberPhotoPath(member);
+                    const photoHtml = photoPath
+                        ? `<img src="${photoPath}" alt="${member.name}">`
                         : '待放照片';
-                    html += `<div class="member-card" onclick="showMemberDetail(this)" data-name="${member.name}" data-role="${member.role}" data-email="${member.email}" data-direction="${member.direction}">
+                    html += `<div class="member-card" onclick="showMemberDetail(this)" data-name="${member.name}" data-role="${member.role}" data-email="${member.email}" data-direction="${member.direction}" data-photo="${photoPath}">
                         <div class="member-photo">${photoHtml}</div>
                         <div class="member-role">${member.display_name}</div>
                     </div>`;
@@ -1961,7 +2040,7 @@
         }
 
         function getAdaptiveWheelThreshold() {
-            const t = 90 + wheelDeltaEMA * 0.9;
+            const t = 130 + wheelDeltaEMA * 0.85;
             return Math.max(WHEEL_MIN_THRESHOLD, Math.min(WHEEL_MAX_THRESHOLD, t));
         }
 
@@ -1971,15 +2050,15 @@
 
             const normalized = Math.min(deltaAbs / 120, 1);
             const easedProgress = 1 - Math.pow(1 - Math.min(progress, 1), 2);
-            const distance = 10 + easedProgress * 20 + normalized * 8;
+            const distance = 6 + easedProgress * 12 + normalized * 5;
             const offset = direction > 0 ? -distance : distance;
 
-            wrapper.style.transition = 'transform 110ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+            wrapper.style.transition = 'transform 90ms cubic-bezier(0.22, 0.61, 0.36, 1)';
             wrapper.style.transform = `translateY(${offset}px)`;
 
             if (wheelPeekTimer) clearTimeout(wheelPeekTimer);
             wheelPeekTimer = setTimeout(() => {
-                wrapper.style.transition = 'transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+                wrapper.style.transition = 'transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1)';
                 wrapper.style.transform = 'translateY(0)';
             }, 80);
         }
@@ -2034,7 +2113,7 @@
 
         document.getElementById('content-wrapper')?.addEventListener('wheel', (e) => {
             if (wheelLock) return;
-            if (Math.abs(e.deltaY) < 4) return;
+            if (Math.abs(e.deltaY) < 8) return;
             if (document.getElementById('member-modal')?.classList.contains('show')) return;
             if (document.getElementById('lightbox')?.classList.contains('show')) return;
             if (document.getElementById('feedback-modal')?.classList.contains('show')) return;
@@ -2057,11 +2136,30 @@
             const role = card.getAttribute('data-role');
             const direction = card.getAttribute('data-direction');
             const email = card.getAttribute('data-email');
+            const photo = card.getAttribute('data-photo') || '';
 
             document.getElementById('modal-member-name').textContent = name;
             document.getElementById('modal-member-role').textContent = role;
             document.getElementById('modal-member-direction').textContent = direction;
             document.getElementById('modal-member-email').textContent = email;
+
+            const photoWrap = document.getElementById('modal-member-photo-wrap');
+            const photoBtn = document.getElementById('modal-member-photo-btn');
+            const photoImg = document.getElementById('modal-member-photo');
+            const photoPlaceholder = document.getElementById('modal-member-photo-placeholder');
+            if (photoWrap && photoBtn && photoImg && photoPlaceholder) {
+                if (photo) {
+                    photoImg.src = photo;
+                    photoImg.alt = `${name} 的照片`;
+                    photoBtn.style.display = 'block';
+                    photoPlaceholder.style.display = 'none';
+                    photoWrap.style.display = 'block';
+                } else {
+                    photoBtn.style.display = 'none';
+                    photoPlaceholder.style.display = 'flex';
+                    photoWrap.style.display = 'block';
+                }
+            }
 
             document.getElementById('member-modal').classList.add('show');
         }
@@ -2090,6 +2188,13 @@
                 imageContent.textContent = '[ 图片 ]';
             }
             lightbox.classList.add('show');
+        }
+
+        function openMemberPhotoLightbox() {
+            const name = document.getElementById('modal-member-name')?.textContent || '成员照片';
+            const photoSrc = document.getElementById('modal-member-photo')?.getAttribute('src') || '';
+            if (!photoSrc) return;
+            openLightbox(name, photoSrc);
         }
 
         function closeLightbox() {
