@@ -128,7 +128,10 @@
 
         /* 导航栏 */
         header {
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex; 
+            justify-content: flex-start; 
+            align-items: center;
+            gap: 40px;
             padding: 15px max(2vw, 20px); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border);
             background: var(--header-bg); z-index: 50;
         }
@@ -162,7 +165,7 @@
             align-items: center;
             gap: max(1vw, 15px); 
         }
-        .nav-tools { display: flex; align-items: center; gap: 10px; position: relative; }
+        .nav-tools { display: flex; align-items: center; gap: 10px; position: relative; margin-left: auto; }
         .mobile-menu-btn { 
             display: none; 
             background: transparent; 
@@ -1306,7 +1309,7 @@
            ========================================== */
         @media (max-width: 1280px) {
             /* 1. 头部布局提前变为汉堡菜单 */
-            header { padding: 15px 30px !important; position: relative; z-index: 1000; }
+            header { padding: 15px 30px !important; position: relative; z-index: 1000; justify-content: space-between !important; }
             .mobile-menu-btn { display: block; }
 
             /* 2. 平板端菜单：右上角优雅的高级悬浮卡片 */
@@ -1354,7 +1357,7 @@
            ========================================== */
         @media (max-width: 640px) {
             /* 1. 手机端极简头部 */
-            header { padding: 12px 15px !important; flex-wrap: nowrap !important; gap: 6px !important; align-items: center !important; }
+            header { padding: 12px 15px !important; flex-wrap: nowrap !important; gap: 6px !important; align-items: center !important; justify-content: space-between !important; }
             .logo { width: auto !important; flex: 1 1 auto; min-width: 0; justify-content: center !important; gap: 6px !important; margin-bottom: 0 !important; font-size: calc(1.2rem * var(--font-scale)) !important; overflow: hidden; }
             .nav-logo-img { height: 44px !important; width: 44px !important; padding: 2px !important; border-radius: 50% !important; }
             .logo-divider { height: 24px !important; margin: 0 6px !important; }
@@ -1598,7 +1601,7 @@
                     <h1 class="hero-vision" data-i18n="hero_subtitle2">我们的愿景: 推动脑疾病诊疗迈入精准医学时代</h1>
                     
                     <div class="hero-desc">
-                        <p><span data-i18n="hero_intro">吴畏，上海交通大学特聘教授、博导，医学院松江研究院资深研究员；蚌埠医科大学特聘教授；Alto Neuroscience（纽交所上市公司）联合创始人；国家高层次领军人才</span></p>
+                        <p><span data-i18n="hero_intro">PI : 吴畏，上海交通大学特聘教授、博导，医学院松江研究院资深研究员；蚌埠医科大学特聘教授；Alto Neuroscience（纽交所上市公司）联合创始人；国家高层次领军人才</span></p>
                         <p style="margin-top: 6px;"><span data-i18n="hero_email">邮箱:</span> weiwuneuro@sjtu.edu.cn</p>
                     </div>
                 </div>
@@ -1630,7 +1633,7 @@
 </div>
                     <div class="prof-info">
                         <h2 data-i18n="prof_name">吴 畏</h2>
-                        <p class="tags" data-i18n="prof_title">吴畏，上海交通大学特聘教授、博导，医学院松江研究院资深研究员；蚌埠医科大学特聘教授；国家高层次领军人才</p>
+                        <p class="tags" data-i18n="prof_title">PI : 吴畏，上海交通大学特聘教授、博导，医学院松江研究院资深研究员；蚌埠医科大学特聘教授；Alto Neuroscience（纽交所上市公司）联合创始人；国家高层次领军人才</p>
                         <span class="email">✉ weiwuneuro@sjtu.edu.cn</span>
                         <p style="color:var(--text-sub); line-height: 1.8; margin-top: 14px;" data-i18n="prof_research">
                             研究方向: 神经精神疾病精准诊疗及临床转化、脑信号分析模型与算法
@@ -1888,7 +1891,7 @@
                 hero_highlight: 'Brain Disorders',
                 hero_subtitle1: '',
                 hero_subtitle2: '我们的愿景：推动脑疾病诊疗迈入精准医学时代',
-                hero_intro: '吴畏，上海交通大学特聘教授、博导，医学院松江研究院资深研究员；蚌埠医科大学特聘教授；Alto Neuroscience（纽交所上市公司）联合创始人；国家高层次领军人才',
+                hero_intro: 'PI : 吴畏，上海交通大学特聘教授、博导，医学院松江研究院资深研究员；蚌埠医科大学特聘教授；Alto Neuroscience（纽交所上市公司）联合创始人；国家高层次领军人才',
                 hero_email: '邮箱:',
                 hero_research: '研究方向: AI驱动的脑疾病精准诊疗及临床转化、脑信号处理与机器学习',
                 home_card1: '课题组组长 吴畏',
@@ -1902,7 +1905,7 @@
                 
                 // 吴畏教授页面
                 prof_name: '吴 畏',
-                prof_title: '吴畏，上海交通大学特聘教授、博导，医学院松江研究院资深研究员；蚌埠医科大学特聘教授；国家高层次领军人才',
+                prof_title: 'PI : 吴畏，上海交通大学特聘教授、博导，医学院松江研究院资深研究员；蚌埠医科大学特聘教授；Alto Neuroscience（纽交所上市公司）联合创始人；国家高层次领军人才',
                 prof_research: '研究方向: AI驱动的脑疾病精准诊疗及临床转化、脑信号处理与机器学习',
                 prof_summary: '在学术界和工业界均拥有丰富研发和管理经验，国家高层次领军人才。现任上海市神经科学学会神经调控分会副主任、IEEE生物医学信号处理技术委员会委员，并担任IEEE Transactions on Affective Computing及IEEE Journal of Biomedical and Health Informatics等期刊编委。发表期刊论文100余篇，以通讯作者/第一作者在Nature Biotechology、Science Translational Medicine、Nature Biomedical Engineering、Nature Mental Health、Science Advances、IEEE Transactions on Pattern Analysis and Machine Intelligence、IEEE Signal Processing Magazine等期刊发表论文多篇，在脑电信号分析算法和精神疾病诊疗生物标志物研究方面做出了重要贡献。',
                 prof_alto: '吴畏教授是精神疾病精准诊疗公司 Alto Neuroscience（纽交所上市）的联合创始人和前任首席数据科学官，构建了该领域首个AI标志物转化平台，推动了精神疾病诊疗迈入精准医学时代。',
@@ -2008,7 +2011,7 @@
                 hero_highlight: 'Brain Disorders',
                 hero_subtitle1: '',
                 hero_subtitle2: 'Our vision: Advancing brain disease diagnosis and treatment into the era of precision medicine',
-                hero_intro: 'Wu Wei, Distinguished Professor & PhD Supervisor at Shanghai Jiao Tong University, Senior Researcher at Songjiang Research Institute, School of Medicine; Distinguished Professor at Bengbu Medical University; Co-founder of Alto Neuroscience (NYSE-listed); National Leading Talent',
+                hero_intro: 'PI: Wu Wei, Distinguished Professor & PhD Supervisor at Shanghai Jiao Tong University, Senior Researcher at Songjiang Research Institute, School of Medicine; Distinguished Professor at Bengbu Medical University; Co-founder of Alto Neuroscience (NYSE-listed); National Leading Talent',
                 hero_email: 'Email: ',
                 hero_research: 'Research: AI-driven precise diagnosis and treatment of brain diseases with clinical translation, brain signal processing and machine learning',
                 home_card1: 'Lab Director Wu Wei',
@@ -2022,7 +2025,7 @@
                 
                 // Prof. Wu Page
                 prof_name: 'Wu Wei',
-                prof_title: 'Wu Wei, Distinguished Professor & PhD Supervisor at Shanghai Jiao Tong University, Senior Researcher at Songjiang Research Institute, School of Medicine; Distinguished Professor at Bengbu Medical University; National Leading Talent',
+                prof_title: 'PI: Wu Wei, Distinguished Professor & PhD Supervisor at Shanghai Jiao Tong University, Senior Researcher at Songjiang Research Institute, School of Medicine; Distinguished Professor at Bengbu Medical University; Co-founder of Alto Neuroscience (NYSE-listed); National Leading Talent',
                 prof_research: 'Research: AI-driven precise diagnosis and treatment of brain diseases with clinical translation, brain signal processing and machine learning',
                 prof_summary: 'Extensive research and management experience in both academia and industry. Recognized as a National Leading Talent, he currently serves as Deputy Chair of the Neuromodulation Branch of the Shanghai Neuroscience Society, is a member of the IEEE Biomedical Signal Processing Technical Committee, and sits on the editorial boards of journals including IEEE Transactions on Affective Computing and IEEE Journal of Biomedical and Health Informatics. He has published over 100 peer‑reviewed articles; as corresponding or first author he has multiple papers in Nature Biotechnology, Science Translational Medicine, Nature Biomedical Engineering, Nature Mental Health, Science Advances, IEEE Transactions on Pattern Analysis and Machine Intelligence, and IEEE Signal Processing Magazine. His work has made significant contributions to EEG signal analysis algorithms and biomarkers for diagnosis and treatment of psychiatric disorders.',
                 prof_alto: 'Prof. Wu Wei is a co-founder and former Chief Data Scientist of Alto Neuroscience (NYSE-listed). He built the first AI biomarker translation platform in this field, advancing psychiatric diagnosis and treatment into the era of precision medicine.',
