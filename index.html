@@ -1301,177 +1301,110 @@
             text-shadow: none;
         }
 
-        @media (max-width: 1080px) {
-            /* ==========================================
-               1. 头部：极简的微吸顶样式，适配亮暗模式
-               ========================================== */
-            header { 
-                padding: 10px 10px !important; 
-                position: relative; 
-                z-index: 1000; 
-                flex-wrap: nowrap;
-                gap: 6px;
-                align-items: center;
-            }
-            .mobile-menu-btn { 
-                display: block;
-            } 
-            .logo { 
-                width: auto !important; 
-                flex: 1 1 auto;
-                min-width: 0;
-                justify-content: center !important; 
-                gap: 6px !important; 
-                margin-bottom: 0 !important; 
-                font-size: calc(1.2rem * var(--font-scale)) !important;
-                overflow: hidden;
-            }
-            .mobile-menu-btn {
-                margin-left: auto;
-                flex: 0 0 auto;
-                font-size: 18px;
-                padding: 2px 8px;
-                border-radius: 7px;
-            }
-            /* 手机端徽章极限放大，确保绝对清晰 */
-            .nav-logo-img { 
-                height: 44px !important; 
-                width: 44px !important; 
-                padding: 2px !important; 
-                border-radius: 50% !important; 
-            }
-            .logo-divider { height: 24px !important; margin: 0 6px !important; }
-            
-            /* ==========================================
-               2. 现代全屏沉浸式菜单 (Fullscreen Overlay)
-               ========================================== */
-            .nav-links { 
+        /* ==========================================
+           🌟 平板/小尺寸笔记本端 (改为 1280px 以下提前触发，绝不拥挤！)
+           ========================================== */
+        @media (max-width: 1280px) {
+            /* 1. 头部布局提前变为汉堡菜单 */
+            header { padding: 15px 30px !important; position: relative; z-index: 1000; }
+            .mobile-menu-btn { display: block; }
+
+            /* 2. 平板端菜单：右上角优雅的高级悬浮卡片 */
+            .nav-links {
                 display: none !important;
-                position: absolute !important; 
-                top: 100% !important;
-                left: 0 !important; 
-                width: 100vw !important; 
-                height: calc(100vh - 60px) !important;
-                
-                background: var(--bg-color) !important; 
-                
-                flex-direction: column !important; 
+                position: absolute !important;
+                top: calc(100% + 15px) !important;
+                right: 30px !important;
+                width: 320px !important;
+                max-height: calc(100vh - 120px) !important;
+
+                /* 👈 核心修复：背景强制使用不透明的网页底色，彻底解决看不清字的问题！ */
+                background: var(--bg-color) !important;
+
+                border: 1px solid var(--glass-border) !important;
+                border-radius: 20px !important;
+                box-shadow: 0 20px 50px rgba(0,0,0,0.5) !important;
+
+                flex-direction: column !important;
                 justify-content: flex-start !important;
                 align-items: center !important;
-                padding: 30px 30px 60px 30px !important; 
-                border: none !important;
-                box-shadow: none !important;
+                padding: 20px 20px 30px 20px !important;
                 z-index: 999;
                 overflow-y: auto;
             }
-            .nav-links.show { 
-                display: flex !important; 
-                animation: fadeIn 0.3s ease-out; 
-            }
-            
-            .nav-link { 
-                width: 100%;
-                font-size: calc(1.25rem * var(--font-scale)) !important; 
-                font-weight: 500 !important;
-                padding: 18px 0 !important; 
-                border-bottom: 1px solid var(--glass-border) !important;
-                text-align: center;
-                letter-spacing: 1px;
+            .nav-links.show { display: flex !important; animation: fadeIn 0.3s ease-out; }
+
+            /* 👈 核心修复：强化菜单文字颜色，让其更加醒目 */
+            .nav-link { width: 100%; font-size: calc(1.1rem * var(--font-scale)) !important; font-weight: 500 !important; padding: 12px 0 !important; border-bottom: 1px solid var(--glass-border) !important; text-align: center; color: var(--text-main) !important;}
+            .nav-link:hover { color: var(--primary-glow) !important; }
+
+            .nav-tools { margin-top: 15px !important; width: 100% !important; justify-content: center !important; flex-wrap: wrap; gap: 15px !important; border: none !important; padding-top: 5px !important;}
+
+            /* 3. 平板端正文布局：保留网格结构，适当缩小间距 */
+            #content-wrapper { padding: 20px 40px !important; }
+            .home-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 15px !important; }
+            .prof-layout { grid-template-columns: 220px 1fr !important; gap: 30px !important; }
+            .prof-avatar { width: 100% !important; max-width: 220px !important; }
+            .gallery-grid { grid-auto-columns: 40vw !important; }
+            .pub-cover-row { grid-auto-columns: 25vw !important; }
+        }
+
+        /* ==========================================
+           📱 手机端极限适配 (640px 以下触发，接管平板样式)
+           ========================================== */
+        @media (max-width: 640px) {
+            /* 1. 手机端极简头部 */
+            header { padding: 12px 15px !important; flex-wrap: nowrap !important; gap: 6px !important; align-items: center !important; }
+            .logo { width: auto !important; flex: 1 1 auto; min-width: 0; justify-content: center !important; gap: 6px !important; margin-bottom: 0 !important; font-size: calc(1.2rem * var(--font-scale)) !important; overflow: hidden; }
+            .nav-logo-img { height: 44px !important; width: 44px !important; padding: 2px !important; border-radius: 50% !important; }
+            .logo-divider { height: 24px !important; margin: 0 6px !important; }
+            .mobile-menu-btn { margin-left: auto; flex: 0 0 auto; font-size: 18px; padding: 2px 8px; border-radius: 7px; }
+
+            /* 2. 手机端菜单：恢复全屏沉浸遮罩模式！ */
+            .nav-links {
+                top: 100% !important;
+                right: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: calc(100vh - 60px) !important;
+                max-height: none !important;
+                background: var(--bg-color) !important;
+                border-radius: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 30px 30px 60px 30px !important;
             }
 
-            /* ==========================================
-               3. 工具栏：智能沉底，大拇指舒适区
-               ========================================== */
-            .nav-tools { 
-                margin-top: auto !important;
-                width: 100% !important;
-                padding-top: 20px !important; 
-                border-top: none !important; 
-                justify-content: center !important; 
-                flex-wrap: wrap; 
-                gap: 15px !important; 
-            }
-
-            /* ==========================================
-               手机端全局文字层级 & 极简间距系统
-               ========================================== */
+            /* 3. 手机端精简布局系统 (保持之前调校的完美比例) */
             #content-wrapper { padding: 10px !important; }
             .glass-panel { padding: 18px 12px !important; margin-bottom: 15px !important; }
-            
-            /* 一级标题：中文主标 & 愿景 */
-            .hero-cn-title, .hero-vision { 
-                font-size: calc(1.48rem * var(--font-scale)) !important; 
-            }
-            
-            /* 一级副标：英文大标题 (放大一号) */
-            .hero-title { 
-                font-size: calc(1.4rem * var(--font-scale)) !important; 
-                line-height: 1.35 !important; 
-                margin-top: 5px !important;
-                margin-bottom: 4px !important; 
-            }
 
-            /* 💡 手机端：英文模式下的霸气主标题特效 */
-            body.lang-en .hero-title {
-                font-size: calc(1.5rem * var(--font-scale)) !important; /* 套用手机中文标题大尺寸 */
-                font-weight: 600 !important;
-                color: var(--neon-border) !important;
-            }
-            body.lang-en .hero-title .hero-light {
-                font-weight: 600 !important;
-            }
+            .hero-cn-title, .hero-vision { font-size: calc(1.48rem * var(--font-scale)) !important; }
+            .hero-title { font-size: calc(1.4rem * var(--font-scale)) !important; line-height: 1.35 !important; margin-top: 5px !important; margin-bottom: 4px !important; }
+            body.lang-en .hero-title { font-size: calc(1.5rem * var(--font-scale)) !important; font-weight: 600 !important; color: var(--neon-border) !important; }
+            body.lang-en .hero-title .hero-light { font-weight: 600 !important; }
+            .section-title, .prof-info h2 { font-size: calc(1.4rem * var(--font-scale)) !important; margin-bottom: 12px !important; text-align: center !important; }
+            .info-list h4, .media-content h4, .team-group h4, .recruitment-ad-copy h5 { font-size: calc(1.1rem * var(--font-scale)) !important; }
 
-            /* 二级与三级标题手机端比例修复 */
-            .section-title, .prof-info h2 { 
-                font-size: calc(1.4rem * var(--font-scale)) !important; 
-                margin-bottom: 12px !important; 
-                text-align: center !important; /* 👈 新增：强制让“吴畏”名字在手机端居中对齐！ */
-            }
-            .info-list h4, .media-content h4, .team-group h4, .recruitment-ad-copy h5 { 
-                font-size: calc(1.1rem * var(--font-scale)) !important; 
-            }
-
-            /* 👑 手机端高档正文：全站所有段落强制等比放大 */
             .hero-desc p, .prof-info .summary, .achievement-text, .info-list ul li, .recruitment-ad-copy p,
             p[data-i18n="contact_desc"], p[data-i18n="contact_postdoc_desc"], p[data-i18n="hero_research"], p[data-i18n="prof_research"], .prof-info p.tags {
-                font-size: calc(1.12rem * var(--font-scale)) !important; /* 👈 手机端同步放大到了 1.12rem，既大又不会挤 */
+                font-size: calc(1.12rem * var(--font-scale)) !important;
                 line-height: 1.7 !important;
             }
 
-            /* 首页极端去空行处理 */
-            .home-hero-panel { 
-                padding: 10px !important; 
-                margin-bottom: 0 !important; /* 👈 强制消除文字板块下方的留白 */
-                padding-bottom: 0 !important; /* 👈 消除文字板块底部的内部留白 */
-            }
-            .home-featured { 
-                margin-top: 5px !important;  /* 👈 让图片紧紧贴着上面的文字 */
-                margin-bottom: 0 !important;
-                padding: 0 !important; 
-            }
-            
+            .home-hero-panel { padding: 10px !important; margin-bottom: 0 !important; padding-bottom: 0 !important; }
+            .home-featured { margin-top: 5px !important; margin-bottom: 0 !important; padding: 0 !important; }
             .hero-eeg-wave { height: 18px !important; margin: 6px 0 !important; }
             .hero-desc { margin-top: 15px !important; }
 
-            .home-grid { 
-                display: flex !important; 
-                flex-direction: row !important; 
-                flex-wrap: nowrap !important; 
-                gap: 8px !important; 
-                margin-top: 15px !important; 
-            }
+            /* 单排横向小卡片 */
+            .home-grid { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; gap: 8px !important; margin-top: 15px !important; }
             .home-card { flex: 1 !important; padding: 12px 4px !important; min-width: 0; }
-            .home-card h3 { 
-                font-size: calc(0.85rem * var(--font-scale)) !important; 
-                margin: 0 !important; 
-                white-space: nowrap !important; 
-                overflow: hidden !important; 
-                text-overflow: ellipsis; 
-            }
+            .home-card h3 { font-size: calc(0.85rem * var(--font-scale)) !important; margin: 0 !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis; }
             .home-card-desc { display: none !important; }
 
             .prof-layout { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 10px !important; }
-            .prof-avatar { width: 130px !important; margin-bottom: 5px !important; }
+            .prof-avatar { width: 130px !important; margin-bottom: 5px !important; max-width: none !important; }
             .prof-info { width: 100% !important; display: flex !important; flex-direction: column !important; }
             .prof-info p.tags { text-align: center !important; font-size: calc(0.9rem * var(--font-scale)) !important; margin-bottom: 10px !important; }
             .prof-info .email { text-align: center !important; font-size: calc(0.8rem * var(--font-scale)) !important; margin: 0 auto 15px auto !important; display: table !important; }
